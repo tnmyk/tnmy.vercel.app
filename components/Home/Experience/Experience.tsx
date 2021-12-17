@@ -1,7 +1,6 @@
 const Experience = () => {
   return (
     <>
-      <span className="text-sm mb-3">experience</span>
       <ExperienceCard />
       <ExperienceCard />
     </>
