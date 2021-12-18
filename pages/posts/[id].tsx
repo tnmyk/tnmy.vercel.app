@@ -1,7 +1,11 @@
 import { Client } from "@notionhq/client";
-
-const Post = ({ postData }) => {
-  return <>{postData}</>;
+import { NotionRenderer } from "react-notion-x";
+const Post = ({ recordMap }) => {
+  return (
+    <>
+      {/* <NotionRenderer recordMap={recordMap} fullPage={true} darkMode={false} /> */}
+    </>
+  );
 };
 
 export default Post;
@@ -16,7 +20,8 @@ export async function getStaticPaths() {
   const paths = results.map((res: { [key: string]: any }) => {
     return {
       params: {
-        id: res.properties.Name.title[0].plain_text.split(" ").join("-"),
+        // id: res.properties.Name.title[0].plain_text.split(" ").join("-"),
+        id: res.id,
       },
     };
   });
@@ -27,11 +32,14 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const postData = params.id;
-    console.log(postData)
+  const pageId = params.id;
+  const notion = new Client({ auth: process.env.NOTION_KEY });
+
+  const response = await notion.pages.retrieve({ page_id: pageId });
+  console.log(response);
   return {
     props: {
-      postData,
+      recordMap: response,
     },
   };
 }
