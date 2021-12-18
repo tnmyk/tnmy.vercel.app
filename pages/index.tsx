@@ -1,10 +1,10 @@
-import type { NextPage } from "next";
 import Experience from "../components/Home/Experience/Experience";
 import Posts from "../components/Home/Posts/Posts";
 import Profile from "../components/Home/Profile/Profile";
 import Projects from "../components/Home/Projects/Projects";
+import { Client } from "@notionhq/client";
 
-const Home: NextPage = () => {
+const Home = ({ posts }: { posts: any }) => {
   return (
     <>
       <Profile />
@@ -14,7 +14,7 @@ const Home: NextPage = () => {
       <span className="text-sm mb-3">experience</span>
       <Experience />
       <span className="text-sm mt-16 mb-3">posts</span>
-      <Posts />
+      <Posts posts={posts} />
       <span className="text-sm mt-16 mb-3">projects</span>
       <Projects />
     </>
@@ -22,3 +22,15 @@ const Home: NextPage = () => {
 };
 
 export default Home;
+
+export async function getStaticProps() {
+  const notion = new Client({ auth: process.env.NOTION_KEY });
+  const response = await notion.databases.query({
+    database_id: process.env.NOTION_DATABASE_ID!,
+  });
+  return {
+    props: {
+      posts: response.results,
+    },
+  };
+}
