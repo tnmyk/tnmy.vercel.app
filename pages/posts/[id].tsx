@@ -1,7 +1,6 @@
 import { Client } from "@notionhq/client";
-const Post = ({ postData }) => {
-  console.log(postData);
-
+import { GetStaticProps } from "next";
+const Post = ({ postData }: { postData: { [key: string]: any } }) => {
   return (
     <>
       {postData.map((x) => {
@@ -34,8 +33,8 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps({ params }) {
-  const pageId = params.id;
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const pageId = params!.id;
   const notion = new Client({ auth: process.env.NOTION_KEY });
 
   const response = await notion.blocks.children.list({
@@ -51,4 +50,4 @@ export async function getStaticProps({ params }) {
       postData: postData,
     },
   };
-}
+};
