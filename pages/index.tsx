@@ -4,7 +4,14 @@ import Profile from "../components/Home/Profile/Profile";
 import Projects from "../components/Home/Projects/Projects";
 import { Client } from "@notionhq/client";
 
-const Home = ({ posts }: { posts: any }) => {
+const Home = ({
+  posts,
+  projects,
+}: {
+  posts: Array<{ [key: string]: any }>;
+  projects: Array<{ [key: string]: any }>;
+}) => {
+  console.log(projects);
   return (
     <>
       <Profile />
@@ -16,7 +23,7 @@ const Home = ({ posts }: { posts: any }) => {
       <span className="text-sm mt-16 mb-3">posts</span>
       <Posts posts={posts} />
       <span className="text-sm mt-16 mb-3">projects</span>
-      <Projects />
+      <Projects projects={projects} />
     </>
   );
 };
@@ -25,8 +32,21 @@ export default Home;
 
 export async function getStaticProps() {
   const notion = new Client({ auth: process.env.NOTION_KEY });
-  const response = await notion.databases.query({
+  const postsResponse = await notion.databases.query({
     database_id: process.env.NOTION_POSTS_DATABASE_ID!,
+    filter: {
+      and: [
+        {
+          property: "Tags",
+          multi_select: {
+            contains: "homepage",
+          },
+        },
+      ],
+    },
+  });
+  const projectsResponse = await notion.databases.query({
+    database_id: process.env.NOTION_PROJECTS_DATABASE_ID!,
     filter: {
       and: [
         {
@@ -40,7 +60,8 @@ export async function getStaticProps() {
   });
   return {
     props: {
-      posts: response.results,
+      posts: postsResponse.results,
+      projects: projectsResponse.results,
     },
   };
 }
