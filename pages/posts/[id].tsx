@@ -34,7 +34,7 @@ export async function getStaticPaths() {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const pageId = params!.id;
+  const pageId: any = params!.id;
   const notion = new Client({ auth: process.env.NOTION_KEY });
 
   const response = await notion.blocks.children.list({
