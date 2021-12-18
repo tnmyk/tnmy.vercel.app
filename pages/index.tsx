@@ -11,7 +11,6 @@ const Home = ({
   posts: Array<{ [key: string]: any }>;
   projects: Array<{ [key: string]: any }>;
 }) => {
-  console.log(projects);
   return (
     <>
       <Profile />
@@ -57,6 +56,12 @@ export async function getStaticProps() {
         },
       ],
     },
+    sorts: [
+      {
+        property: "Rank",
+        direction: "ascending",
+      },
+    ],
   });
   return {
     props: {
