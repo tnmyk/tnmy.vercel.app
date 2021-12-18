@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { AiFillGithub } from "react-icons/ai";
 import { BsTwitter } from "react-icons/bs";
 import { GrLinkedinOption } from "react-icons/gr";
@@ -10,18 +11,18 @@ const Profile = () => {
         <h1 className="font-medium text-3xl">tanmay kachroo</h1>
         <div className=" text-gray-200 mt-1 mb-4">fullstack dev</div>
         <div className="flex items-center text-xl gap-3">
-          <a href="/">
+          <Link href="/">
             <AiFillGithub />
-          </a>
-          <a href="/">
+          </Link>
+          <Link href="/">
             <BsTwitter />
-          </a>
-          <a href="/">
+          </Link>
+          <Link href="/">
             <GrLinkedinOption />
-          </a>
-          <a href="/">
+          </Link>
+          <Link href="/">
             <SiDiscord />
-          </a>
+          </Link>
         </div>
       </div>
     </div>
