@@ -26,7 +26,17 @@ export default Home;
 export async function getStaticProps() {
   const notion = new Client({ auth: process.env.NOTION_KEY });
   const response = await notion.databases.query({
-    database_id: process.env.NOTION_DATABASE_ID!,
+    database_id: process.env.NOTION_POSTS_DATABASE_ID!,
+    filter: {
+      and: [
+        {
+          property: "Tags",
+          multi_select: {
+            contains: "homepage",
+          },
+        },
+      ],
+    },
   });
   return {
     props: {
