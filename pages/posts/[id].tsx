@@ -1,7 +1,7 @@
 import { Client } from "@notionhq/client";
 
-const Post = ({ postdata }) => {
-  return <>ss</>;
+const Post = ({ postData }) => {
+  return <>{postData}</>;
 };
 
 export default Post;
@@ -20,7 +20,6 @@ export async function getStaticPaths() {
       },
     };
   });
-  console.log(paths);
   return {
     paths,
     fallback: false,
@@ -29,7 +28,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const postData = params.id;
-
+    console.log(postData)
   return {
     props: {
       postData,
