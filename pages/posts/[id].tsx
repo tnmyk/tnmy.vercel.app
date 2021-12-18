@@ -1,5 +1,4 @@
 import { Client } from "@notionhq/client";
-import { NotionRenderer } from "react-notion-x";
 const Post = ({ postData }) => {
   console.log(postData);
 

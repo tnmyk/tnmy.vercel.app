@@ -3,7 +3,7 @@ import React from "react";
 import Nav from "../Nav/Nav";
 import { AppProps } from "next/app";
 
-const Layout = ({ children }: { children: AppProps }) => {
+const Layout = ({ children }: { children: any }) => {
   return (
     <div className="flex flex-col items-center ">
       <Nav />
