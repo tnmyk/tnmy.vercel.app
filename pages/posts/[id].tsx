@@ -1,9 +1,13 @@
 import { Client } from "@notionhq/client";
 import { NotionRenderer } from "react-notion-x";
-const Post = ({ recordMap }) => {
+const Post = ({ postData }) => {
+  console.log(postData);
+
   return (
     <>
-      {/* <NotionRenderer recordMap={recordMap} fullPage={true} darkMode={false} /> */}
+      {postData.map((x) => {
+        return <div>{x}</div>;
+      })}
     </>
   );
 };
@@ -35,11 +39,17 @@ export async function getStaticProps({ params }) {
   const pageId = params.id;
   const notion = new Client({ auth: process.env.NOTION_KEY });
 
-  const response = await notion.pages.retrieve({ page_id: pageId });
-  console.log(response);
+  const response = await notion.blocks.children.list({
+    block_id: pageId,
+    page_size: 50,
+  });
+  const results = response.results;
+  const postData = results.map((x) => {
+    if (x.paragraph.text[0].plain_text) return x.paragraph.text[0].plain_text;
+  });
   return {
     props: {
-      recordMap: response,
+      postData: postData,
     },
   };
 }
