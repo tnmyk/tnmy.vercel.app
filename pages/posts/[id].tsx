@@ -3,8 +3,8 @@ import { GetStaticProps } from "next";
 const Post = ({ postData }: { postData: { [key: string]: any } }) => {
   return (
     <>
-      {postData.map((x) => {
-        return <div>{x}</div>;
+      {postData.map((x: any, index: any) => {
+        return <div key={index}>{x}</div>;
       })}
     </>
   );
@@ -42,7 +42,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     page_size: 50,
   });
   const results = response.results;
-  const postData = results.map((x) => {
+  const postData = results.map((x: any) => {
     if (x.paragraph.text[0].plain_text) return x.paragraph.text[0].plain_text;
   });
   return {
