@@ -3,8 +3,8 @@ import experienceData from "./experienceData";
 const Experience = () => {
   return (
     <>
-      {experienceData.map((exp) => {
-        return <ExperienceCard exp={exp} />;
+      {experienceData.map((exp, index) => {
+        return <ExperienceCard key={index} exp={exp} />;
       })}
     </>
   );

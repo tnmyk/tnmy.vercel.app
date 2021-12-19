@@ -13,7 +13,6 @@ const Posts = ({ posts }: { posts: Array<{ [key: string]: any }> }) => {
 export default Posts;
 
 const PostCard = ({ post }: { post: { [key: string]: any } }) => {
-  console.log(post.properties);
   return (
     <Link href={`/posts/${post.id}`}>
       <div
