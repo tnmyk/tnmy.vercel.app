@@ -104,8 +104,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     block_id: pageId,
     page_size: 50,
   });
-  const pageResponse = await notion.pages.retrieve({ page_id: pageId });
-  let postProperties: String = pageResponse.properties;
+  const pageResponse: any = await notion.pages.retrieve({ page_id: pageId });
+  let postProperties = pageResponse.properties;
   const results = response.results;
   const postData = results.map((x: any) => {
     const type = x.type;
