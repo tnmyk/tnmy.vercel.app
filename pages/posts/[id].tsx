@@ -1,6 +1,44 @@
 import { Client } from "@notionhq/client";
 import { GetStaticProps } from "next";
 import Head from "next/head";
+
+const Block = ({
+  children,
+  annotations,
+  type,
+}: {
+  children: String;
+  annotations: { [key: string]: any };
+  type: String;
+}) => {
+  const style = {
+    fontStyle: annotations.italic ? "italic" : "",
+    fontWeight: annotations.bold ? "800" : "",
+    color: annotations.color,
+  };
+  let className;
+  switch (type) {
+    case "break":
+      return <br />;
+    case "heading_1":
+      className = "text-3xl";
+      break;
+    case "heading_2":
+      className = "text-2xl";
+      break;
+    case "heading_3":
+      className = "text-xl";
+      break;
+    case "paragraph":
+      break;
+  }
+  return (
+    <div className={className} style={style}>
+      {children}
+    </div>
+  );
+};
+
 const Post = ({
   postData,
   postProperties,
@@ -23,39 +61,12 @@ const Post = ({
         </p>
         <br />
         {postData.map((x: any, index: any) => {
-          const style = {
-            fontStyle: x.annotations.italic ? "italic" : "",
-            fontWeight: x.annotations.bold ? "800" : "",
-            color: x.annotations.color,
-          };
-          switch (x.type) {
-            case "break":
-              return <br />;
-            case "heading_1":
-              return (
-                <h1 className="text-3xl" key={index}>
-                  {x.text}
-                </h1>
-              );
-            case "heading_2":
-              return (
-                <h1 className="text-2xl" key={index}>
-                  {x.text}
-                </h1>
-              );
-            case "heading_3":
-              return (
-                <h1 className="text-xl" key={index}>
-                  {x.text}
-                </h1>
-              );
-            case "paragraph":
-              return (
-                <div key={index} style={style}>
-                  {x.text}
-                </div>
-              );
-          }
+          return (
+            <Block key={index} annotations={x.annotations} type={x.type}>
+              {x.text}
+            </Block>
+          );
+          //
         })}
       </div>
     </>
