@@ -1,15 +1,18 @@
+import experienceData from "./experienceData";
+
 const Experience = () => {
   return (
     <>
-      <ExperienceCard />
-      <ExperienceCard />
+      {experienceData.map((exp) => {
+        return <ExperienceCard exp={exp} />;
+      })}
     </>
   );
 };
 
 export default Experience;
 
-const ExperienceCard = () => {
+const ExperienceCard = ({ exp }: { exp: { [key: string]: string } }) => {
   return (
     <div
       className="flex justify-between items-center border border-neutral-600 p-2 px-6 rounded-md mb-3 "
@@ -20,12 +23,12 @@ const ExperienceCard = () => {
           className="font-medium text-gray-300 "
           style={{ fontSize: "0.8rem" }}
         >
-          web dev intern
+          {exp.position}
         </span>
-        <span className="text-lg">Spacenos</span>
+        <span className="text-lg">{exp.company}</span>
       </div>
       <div className="text-gray-300 mt-1 mr-4" style={{ fontSize: "0.82rem" }}>
-        dec, 2021 - present
+        {exp.duration}
       </div>
     </div>
   );
