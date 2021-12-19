@@ -1,8 +1,22 @@
 import { Client } from "@notionhq/client";
 import { GetStaticProps } from "next";
-const Post = ({ postData }: { postData: { [key: string]: any } }) => {
+const Post = ({
+  postData,
+  postProperties,
+}: {
+  postData: { [key: string]: any };
+  postProperties: { [key: string]: any };
+}) => {
   return (
-    <div className="mt-5 flex flex-col gap-y-1 w-1/2">
+    <div className="mt-10 flex flex-col gap-y-1 w-1/2">
+      <h1 className="text-5xl">{postProperties.Name.title[0].plain_text}</h1>
+      <p className="text-gray-200">
+        {new Date(postProperties.Created.created_time).toLocaleDateString(
+          "en-EN",
+          { year: "numeric", month: "long", day: "numeric" }
+        )}
+      </p>
+      <br />
       {postData.map((x: any, index: any) => {
         const style = {
           fontStyle: x.annotations.italic ? "italic" : "",
@@ -14,13 +28,13 @@ const Post = ({ postData }: { postData: { [key: string]: any } }) => {
             return <br />;
           case "heading_1":
             return (
-              <h1 className="text-5xl" key={index}>
+              <h1 className="text-3xl" key={index}>
                 {x.text}
               </h1>
             );
           case "heading_2":
             return (
-              <h1 className="text-3xl" key={index}>
+              <h1 className="text-2xl" key={index}>
                 {x.text}
               </h1>
             );
@@ -73,6 +87,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     block_id: pageId,
     page_size: 50,
   });
+  const pageResponse = await notion.pages.retrieve({ page_id: pageId });
+  console.log(pageResponse.properties);
   const results = response.results;
   const postData = results.map((x: any) => {
     const type = x.type;
@@ -89,6 +105,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   });
   return {
     props: {
+      postProperties: pageResponse.properties,
       postData: postData,
     },
     revalidate: 10,
