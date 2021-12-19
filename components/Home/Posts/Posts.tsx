@@ -17,7 +17,7 @@ const PostCard = ({ post }: { post: { [key: string]: any } }) => {
     <Link href={`/posts/${post.id}`}>
       <div
         style={{ width: "11.3rem", height: "11.3rem" }}
-        className=" rounded-md flex items-center justify-center p-6 bg-pink-300 text-lg leading-5"
+        className="cursor-pointer rounded-md flex items-center justify-center p-6 bg-pink-300 text-lg leading-5"
       >
         {post.properties.Name.title[0].plain_text}
       </div>
