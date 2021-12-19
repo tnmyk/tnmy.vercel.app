@@ -105,7 +105,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     page_size: 50,
   });
   const pageResponse = await notion.pages.retrieve({ page_id: pageId });
-  console.log(pageResponse.properties);
+  let postProperties: String = pageResponse.properties;
   const results = response.results;
   const postData = results.map((x: any) => {
     const type = x.type;
@@ -122,7 +122,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   });
   return {
     props: {
-      postProperties: pageResponse.properties,
+      postProperties: postProperties,
       postData: postData,
     },
     revalidate: 10,
