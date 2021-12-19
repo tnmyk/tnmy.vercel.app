@@ -2,7 +2,7 @@ import { Client } from "@notionhq/client";
 import { GetStaticProps } from "next";
 const Post = ({ postData }: { postData: { [key: string]: any } }) => {
   return (
-    <>
+    <div className="mt-5 flex flex-col gap-y-1 w-1/2">
       {postData.map((x: any, index: any) => {
         const style = {
           fontStyle: x.annotations.italic ? "italic" : "",
@@ -10,6 +10,8 @@ const Post = ({ postData }: { postData: { [key: string]: any } }) => {
           color: x.annotations.color,
         };
         switch (x.type) {
+          case "break":
+            return <br />;
           case "heading_1":
             return (
               <h1 className="text-5xl" key={index}>
@@ -36,7 +38,7 @@ const Post = ({ postData }: { postData: { [key: string]: any } }) => {
             );
         }
       })}
-    </>
+    </div>
   );
 };
 
@@ -74,7 +76,11 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const results = response.results;
   const postData = results.map((x: any) => {
     const type = x.type;
-    if (!x[type].text[0]) return;
+    if (!x[type].text[0])
+      return {
+        type: "break",
+        annotations: {},
+      };
     return {
       type,
       text: x[type].text[0].plain_text,
