@@ -4,7 +4,37 @@ const Post = ({ postData }: { postData: { [key: string]: any } }) => {
   return (
     <>
       {postData.map((x: any, index: any) => {
-        return <div key={index}>{x}</div>;
+        const style = {
+          fontStyle: x.annotations.italic ? "italic" : "",
+          fontWeight: x.annotations.bold ? "800" : "",
+          color: x.annotations.color,
+        };
+        switch (x.type) {
+          case "heading_1":
+            return (
+              <h1 className="text-5xl" key={index}>
+                {x.text}
+              </h1>
+            );
+          case "heading_2":
+            return (
+              <h1 className="text-3xl" key={index}>
+                {x.text}
+              </h1>
+            );
+          case "heading_3":
+            return (
+              <h1 className="text-xl" key={index}>
+                {x.text}
+              </h1>
+            );
+          case "paragraph":
+            return (
+              <div key={index} style={style}>
+                {x.text}
+              </div>
+            );
+        }
       })}
     </>
   );
@@ -43,7 +73,13 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   });
   const results = response.results;
   const postData = results.map((x: any) => {
-    if (x.paragraph.text[0].plain_text) return x.paragraph.text[0].plain_text;
+    const type = x.type;
+    if (!x[type].text[0]) return;
+    return {
+      type,
+      text: x[type].text[0].plain_text,
+      annotations: x[type].text[0].annotations,
+    };
   });
   return {
     props: {
