@@ -1,5 +1,6 @@
 import { Client } from "@notionhq/client";
 import { GetStaticProps } from "next";
+import Head from "next/head";
 const Post = ({
   postData,
   postProperties,
@@ -8,51 +9,56 @@ const Post = ({
   postProperties: { [key: string]: any };
 }) => {
   return (
-    <div className="mt-10 flex flex-col gap-y-1 w-1/2">
-      <h1 className="text-5xl">{postProperties.Name.title[0].plain_text}</h1>
-      <p className="text-gray-200">
-        {new Date(postProperties.Created.created_time).toLocaleDateString(
-          "en-EN",
-          { year: "numeric", month: "long", day: "numeric" }
-        )}
-      </p>
-      <br />
-      {postData.map((x: any, index: any) => {
-        const style = {
-          fontStyle: x.annotations.italic ? "italic" : "",
-          fontWeight: x.annotations.bold ? "800" : "",
-          color: x.annotations.color,
-        };
-        switch (x.type) {
-          case "break":
-            return <br />;
-          case "heading_1":
-            return (
-              <h1 className="text-3xl" key={index}>
-                {x.text}
-              </h1>
-            );
-          case "heading_2":
-            return (
-              <h1 className="text-2xl" key={index}>
-                {x.text}
-              </h1>
-            );
-          case "heading_3":
-            return (
-              <h1 className="text-xl" key={index}>
-                {x.text}
-              </h1>
-            );
-          case "paragraph":
-            return (
-              <div key={index} style={style}>
-                {x.text}
-              </div>
-            );
-        }
-      })}
-    </div>
+    <>
+      <Head>
+        <title>{postProperties.Name.title[0].plain_text}</title>
+      </Head>
+      <div className="mt-12 flex flex-col gap-y-1 w-1/2">
+        <h1 className="text-5xl">{postProperties.Name.title[0].plain_text}</h1>
+        <p className="text-gray-200">
+          {new Date(postProperties.Created.created_time).toLocaleDateString(
+            "en-EN",
+            { year: "numeric", month: "long", day: "numeric" }
+          )}
+        </p>
+        <br />
+        {postData.map((x: any, index: any) => {
+          const style = {
+            fontStyle: x.annotations.italic ? "italic" : "",
+            fontWeight: x.annotations.bold ? "800" : "",
+            color: x.annotations.color,
+          };
+          switch (x.type) {
+            case "break":
+              return <br />;
+            case "heading_1":
+              return (
+                <h1 className="text-3xl" key={index}>
+                  {x.text}
+                </h1>
+              );
+            case "heading_2":
+              return (
+                <h1 className="text-2xl" key={index}>
+                  {x.text}
+                </h1>
+              );
+            case "heading_3":
+              return (
+                <h1 className="text-xl" key={index}>
+                  {x.text}
+                </h1>
+              );
+            case "paragraph":
+              return (
+                <div key={index} style={style}>
+                  {x.text}
+                </div>
+              );
+          }
+        })}
+      </div>
+    </>
   );
 };
 
