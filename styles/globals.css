@@ -24,7 +24,7 @@ body {
 }
 
 #profile {
-  transition:  1s;
+  transition: 1s;
   transition-property: margin-right tranform;
 }
 .profileleft {
@@ -39,5 +39,20 @@ body {
     position: relative;
     transform: scale(1);
     margin: auto;
+  }
+}
+
+body {
+  animation: onload 1.5s;
+  transition: 1s;
+}
+@keyframes onload {
+  0% {
+    opacity: 0;
+    margin-top: 2rem;
+  }
+  100% {
+    opacity: 1;
+    margin-top: 0;
   }
 }
