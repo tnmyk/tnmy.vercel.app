@@ -29,7 +29,7 @@ const Home = ({
       <span className="text-sm mt-16 mb-3">projects</span>
       <Projects projects={projects} />
       <Contact />
-      <div className="border-t-2 h-6 w-5/12 mt-20 border-neutral-600" />
+      <div className="border-t-2 h-6 w-5/12 mt-28 border-neutral-600" />
     </>
   );
 };

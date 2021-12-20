@@ -1,6 +1,7 @@
 import { Client } from "@notionhq/client";
 import { GetStaticProps } from "next";
 import Head from "next/head";
+import { useEffect } from "react";
 
 const Block = ({
   children,
@@ -42,10 +43,25 @@ const Block = ({
 const Post = ({
   postData,
   postProperties,
+  pageId,
 }: {
   postData: { [key: string]: any };
   postProperties: { [key: string]: any };
+  pageId: String;
 }) => {
+  useEffect(() => {
+    const update = async () => {
+      try {
+        await fetch(`http://localhost:3000/api/views/${pageId}`, {
+          method: "POST",
+        });
+        return null;
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    update();
+  }, []);
   return (
     <>
       <Head>
@@ -59,6 +75,7 @@ const Post = ({
             { year: "numeric", month: "long", day: "numeric" }
           )}
         </p>
+        views: {postProperties.Views.number + 1}
         <br />
         {postData.map((x: any, index: any) => {
           return (
@@ -106,6 +123,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   });
   const pageResponse: any = await notion.pages.retrieve({ page_id: pageId });
   let postProperties = pageResponse.properties;
+
   const results = response.results;
   const postData = results.map((x: any) => {
     const type = x.type;
@@ -123,6 +141,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   return {
     props: {
       postProperties: postProperties,
+      pageId: pageId,
       postData: postData,
     },
     revalidate: 10,
