@@ -53,7 +53,7 @@ const Post = ({
     const update = async () => {
       try {
         await fetch(
-          `http://${
+          `https://${
             process.env.NEXT_PUBLIC_VERCEL_URL || process.env.VERCEL_URL
           }/api/views/${pageId}`,
           {
