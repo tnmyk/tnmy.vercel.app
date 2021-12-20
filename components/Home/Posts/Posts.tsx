@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const Posts = ({ posts }: { posts: Array<{ [key: string]: any }> }) => {
   return (
-    <div className="flex flex-wrap gap-x-4">
+    <div className="flex justify-center flex-wrap gap-x-4 gap-y-3">
       {posts.map((post, index) => {
         return <PostCard key={index} post={post} />;
       })}
