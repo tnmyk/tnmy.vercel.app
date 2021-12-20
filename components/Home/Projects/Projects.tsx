@@ -17,7 +17,7 @@ export default Projects;
 
 const ProjectCard = ({ project }: { [key: string]: any }) => {
   return (
-    <div className="flex-col w-11/12 sm:w-5/12 sm:flex-row border border-neutral-700 rounded-md  flex justify-between items-center p-2 px-4 mb-2">
+    <div className="flex-col w-11/12 sm:w-5/12 sm:flex-row border border-neutral-700 rounded-md  flex justify-between sm:items-center p-2 px-4 mb-2">
       <div className="flex flex-col ">
         <span className="text-xl leading-5 mt-3">
           {project.properties.Name.title[0].plain_text}
@@ -26,7 +26,7 @@ const ProjectCard = ({ project }: { [key: string]: any }) => {
           {project.properties.Description.rich_text[0].plain_text}
         </span>
       </div>
-      <div className="flex gap-x-4">
+      <div className="flex mt-2 sm:mt-0 gap-x-4">
         <a
           className="bg-white text-gray-900 font-bold text-sm flex items-center justify-center gap-x-1 px-3 pt-1  rounded-full"
           target="_blank"
