@@ -28,7 +28,7 @@ const ProjectCard = ({ project }: { [key: string]: any }) => {
       </div>
       <div className="flex gap-x-4">
         <a
-          className="bg-white text-gray-900 font-semibold text-sm flex items-center justify-center gap-x-1 px-2 py-1  rounded-full"
+          className="bg-white text-gray-900 font-bold text-sm flex items-center justify-center gap-x-1 px-3 pt-1  rounded-full"
           target="_blank"
           rel="noreferrer"
           href={project.properties.Visit.url}
@@ -36,7 +36,7 @@ const ProjectCard = ({ project }: { [key: string]: any }) => {
           visit <BsArrowUpRight />
         </a>
         <a
-          className="bg-white text-gray-900 font-semibold text-sm flex items-center justify-center gap-x-1 px-2  py-1 rounded-full"
+          className="bg-white text-gray-900 font-bold text-sm flex items-center justify-center gap-x-1 px-3  pt-1 rounded-full"
           target="_blank"
           rel="noreferrer"
           href={project.properties.Github.url}
