@@ -10,7 +10,7 @@ export default async function handler(
   res: NextApiResponse<Data>
 ) {
   if (req.method === "POST") {
-    const { id: pageId } = req.query;
+    const { id: pageId }: any = req.query;
     const notion = new Client({ auth: process.env.NOTION_KEY });
 
     const initresponse: any = await notion.pages.retrieve({ page_id: pageId });
