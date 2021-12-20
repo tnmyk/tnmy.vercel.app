@@ -22,3 +22,22 @@ a {
 body {
   @apply text-white bg-black;
 }
+
+#profile {
+  transition:  1s;
+  transition-property: margin-right tranform;
+}
+.profileleft {
+  position: fixed;
+  transform: scale(0.63);
+  margin-right: 70%;
+  width: max-content;
+}
+
+@media screen and (max-width: 1280px) {
+  .profileleft {
+    position: relative;
+    transform: scale(1);
+    margin: auto;
+  }
+}
