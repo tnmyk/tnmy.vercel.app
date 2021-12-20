@@ -15,10 +15,10 @@ export default Experience;
 const ExperienceCard = ({ exp }: { exp: { [key: string]: string } }) => {
   return (
     <div
-      className="flex justify-between items-center border border-neutral-600 p-2 px-6 rounded-md mb-3 "
-      style={{ width: "44%" }}
+      className="flex-col sm:flex-row flex justify-between sm:items-center border border-neutral-600 p-2 px-6 rounded-md mb-3 w-11/12 sm:w-5/12"
+      
     >
-      <div className="flex flex-col  mt-3" style={{ lineHeight: "0.5rem" }}>
+      <div className="flex flex-col mt-3" style={{ lineHeight: "0.5rem" }}>
         <span
           className="font-medium text-gray-300 "
           style={{ fontSize: "0.8rem" }}
@@ -27,7 +27,7 @@ const ExperienceCard = ({ exp }: { exp: { [key: string]: string } }) => {
         </span>
         <span className="text-lg">{exp.company}</span>
       </div>
-      <div className="text-gray-300 mt-1 mr-4" style={{ fontSize: "0.82rem" }}>
+      <div className="text-gray-300 sm:mt-1 mr-4" style={{ fontSize: "0.82rem" }}>
         {exp.duration}
       </div>
     </div>
