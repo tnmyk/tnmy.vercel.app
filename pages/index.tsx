@@ -4,6 +4,7 @@ import Profile from "../components/Home/Profile/Profile";
 import Projects from "../components/Home/Projects/Projects";
 import { Client } from "@notionhq/client";
 import Head from "next/head";
+import Contact from "../components/Home/Contact/Contact";
 
 const Home = ({
   posts,
@@ -27,6 +28,8 @@ const Home = ({
       <Posts posts={posts} />
       <span className="text-sm mt-16 mb-3">projects</span>
       <Projects projects={projects} />
+      <Contact />
+      <div className="border-t-2 h-6 w-5/12 mt-20 border-neutral-600" />
     </>
   );
 };
