@@ -22,13 +22,13 @@ const Block = ({
     case "break":
       return <br />;
     case "heading_1":
-      className = "text-3xl";
+      className = " text-xl sm:text-3xl";
       break;
     case "heading_2":
-      className = "text-2xl";
+      className = "text-lg sm:text-2xl";
       break;
     case "heading_3":
-      className = "text-xl";
+      className = "sm:text-xl";
       break;
     case "paragraph":
       break;
@@ -72,15 +72,18 @@ const Post = ({
       <Head>
         <title>{postProperties.Name.title[0].plain_text}</title>
       </Head>
-      <div className="mt-12 flex flex-col gap-y-1 w-1/2">
-        <h1 className="text-5xl">{postProperties.Name.title[0].plain_text}</h1>
-        <p className="text-gray-200">
+      <div className="mt-6 sm:mt-12 flex flex-col gap-y-1 w-10/12  sm:w-1/2">
+        <h1 className="text-3xl sm:text-5xl">
+          {postProperties.Name.title[0].plain_text}
+        </h1>
+        <p className="text-gray-200 text-xs sm:text-md">
           {new Date(postProperties.Created.created_time).toLocaleDateString(
             "en-EN",
             { year: "numeric", month: "long", day: "numeric" }
           )}
+          <span className="ml-6">views: {postProperties.Views.number + 1}</span>
         </p>
-        views: {postProperties.Views.number + 1}
+
         <br />
         {postData.map((x: any, index: any) => {
           return (
