@@ -11,7 +11,7 @@ const StyledLink = ({ children, href }: { children: String; href: any }) => {
         style={{
           borderBottom: router.asPath === href ? "3px solid pink" : "",
         }}
-        className="text-2xl w-fit"
+        className=" text-2xl w-fit"
       >
         {children}
       </a>
@@ -20,7 +20,7 @@ const StyledLink = ({ children, href }: { children: String; href: any }) => {
 };
 const VerticalNav = () => {
   return (
-    <div className="fixed h-full flex flex-col items-center justify-center w-1/4">
+    <div className="hidden sm:flex fixed h-full flex flex-col items-center justify-center w-1/4">
       <div className="flex flex-col gap-y-4">
         <StyledLink href="/">home</StyledLink>
         <StyledLink href="/posts">posts</StyledLink>
