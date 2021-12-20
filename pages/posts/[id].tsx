@@ -52,9 +52,14 @@ const Post = ({
   useEffect(() => {
     const update = async () => {
       try {
-        await fetch(`http://localhost:3000/api/views/${pageId}`, {
-          method: "POST",
-        });
+        await fetch(
+          `http://${
+            process.env.NEXT_PUBLIC_VERCEL_URL || process.env.VERCEL_URL
+          }/api/views/${pageId}`,
+          {
+            method: "POST",
+          }
+        );
         return null;
       } catch (e) {
         console.log(e);
