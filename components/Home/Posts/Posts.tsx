@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { BsEye } from "react-icons/bs";
 
 const Posts = ({ posts }: { posts: Array<{ [key: string]: any }> }) => {
   return (
@@ -22,9 +23,23 @@ const PostCard = ({ post }: { post: { [key: string]: any } }) => {
           backgroundColor: post.properties.BgColor?.rich_text[0]?.plain_text,
           color: post.properties.Color?.rich_text[0]?.plain_text,
         }}
-        className="cursor-pointer rounded-md flex items-center justify-center p-6 bg-pink-300 text-lg leading-5"
+        className="relative cursor-pointer rounded-md flex items-center justify-center p-6 bg-pink-300 text-lg leading-5"
       >
         {post.properties.Name.title[0].plain_text}
+        <span
+          style={{
+            position: "absolute",
+            right: "1rem",
+            bottom: "0.7rem",
+            fontSize: "0.9rem",
+            display: "flex",
+            columnGap: "0.3rem",
+            justifyContent: "center",
+          }}
+        >
+          <BsEye style={{ fontSize: "1.1rem" }} />{" "}
+          {post.properties.Views.number}
+        </span>
       </div>
     </Link>
   );
