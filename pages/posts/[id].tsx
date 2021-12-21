@@ -30,6 +30,15 @@ const Block = ({
     case "heading_3":
       className = "sm:text-xl";
       break;
+    case "code":
+      className = "font-mono bg-gray-800 rounded p-2";
+      return (
+        <div className={className} style={style}>
+          {children.split("\n").map((exp) => {
+            return <div>{exp}</div>;
+          })}
+        </div>
+      );
     case "paragraph":
       break;
   }
@@ -49,6 +58,7 @@ const Post = ({
   postProperties: { [key: string]: any };
   pageId: String;
 }) => {
+  console.log(postData);
   useEffect(() => {
     const update = async () => {
       try {
