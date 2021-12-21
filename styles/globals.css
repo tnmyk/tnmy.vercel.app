@@ -24,7 +24,7 @@ body {
 }
 
 #profile {
-  transition: 1s;
+  transition: 0.6s;
   transition-property: all;
   z-index: 10;
   position: fixed;
