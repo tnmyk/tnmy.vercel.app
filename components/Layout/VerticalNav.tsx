@@ -9,7 +9,7 @@ const StyledLink = ({ children, href }: { children: string; href: any }) => {
       <a
         className={`${
           (children === "home" &&
-            (router.asPath === "/" || router.asPath === "")) ||
+            (router.asPath === "/" || !router.asPath)) ||
           router.asPath.includes(children)
             ? "verticalNavActive"
             : ""
