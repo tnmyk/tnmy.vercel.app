@@ -58,7 +58,6 @@ const Post = ({
   postProperties: { [key: string]: any };
   pageId: String;
 }) => {
-  console.log(postData);
   useEffect(() => {
     const update = async () => {
       try {
@@ -82,7 +81,7 @@ const Post = ({
       <Head>
         <title>{postProperties.Name.title[0].plain_text}</title>
       </Head>
-      <div className="mt-6 sm:mt-12 flex flex-col gap-y-1 w-10/12  sm:w-1/2">
+      <div className="mt-6 sm:ml-12 sm:mt-12 flex flex-col gap-y-1 w-10/12  sm:w-3/5 md:w-1/2">
         <h1 className="text-3xl sm:text-5xl">
           {postProperties.Name.title[0].plain_text}
         </h1>

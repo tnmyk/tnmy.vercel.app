@@ -2,7 +2,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { Url } from "url";
 
-const StyledLink = ({ children, href }: { children: String; href: any }) => {
+const StyledLink = ({ children, href }: { children: string; href: any }) => {
   const router = useRouter();
 
   return (
@@ -10,8 +10,9 @@ const StyledLink = ({ children, href }: { children: String; href: any }) => {
       <a
         style={{
           borderBottom:
-            router.asPath === href ||
-            (children === "home" && router.asPath === "")
+            (children === "home" &&
+              (router.asPath === "/" || router.asPath === "")) ||
+            router.asPath.includes(children)
               ? "3px solid pink"
               : "",
         }}
