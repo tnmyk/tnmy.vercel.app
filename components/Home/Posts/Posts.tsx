@@ -3,7 +3,7 @@ import { BsEye } from "react-icons/bs";
 
 const Posts = ({ posts }: { posts: Array<{ [key: string]: any }> }) => {
   return (
-    <div className="flex justify-center flex-wrap gap-x-4 gap-y-3">
+    <div style={{maxWidth:'66%'}} className="flex justify-center flex-wrap gap-x-4 gap-y-3 ">
       {posts.map((post, index) => {
         return <PostCard key={index} post={post} />;
       })}
