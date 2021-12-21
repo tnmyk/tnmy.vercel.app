@@ -19,7 +19,7 @@ const Home = ({
         <title>Home</title>
       </Head>
       <Profile />
-      <div className="mt-20 text-xl mb-20">
+      <div className="mt-12 text-xl mb-20">
         I like <span className="text-red-200">building.</span>
       </div>
       <span className="text-sm mb-3">experience</span>

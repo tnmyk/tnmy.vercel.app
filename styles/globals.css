@@ -27,12 +27,18 @@ body {
   transition: 0.6s;
   transition-property: all;
   z-index: 10;
-  position: fixed;
   width: max-content;
+  position: fixed;
 }
 .profileleft {
-  transform: scale(0.63) translateY(-30vh);
+  transform: scale(0.63) translateY(-34vh);
   margin-right: 70%;
+}
+#profile div {
+  transition: 1s;
+}
+.profileleft div {
+  @apply gap-x-4;
 }
 
 @media screen and (max-width: 1180px) {

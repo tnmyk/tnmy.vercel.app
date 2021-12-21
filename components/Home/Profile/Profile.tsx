@@ -7,7 +7,7 @@ import { SiDiscord } from "react-icons/si";
 import profileData from "./profileData";
 const Profile = () => {
   useEffect(() => {
-    var prevScrollpos = 120;
+    var prevScrollpos = 20;
     window.onscroll = function () {
       var currentScrollPos = window.pageYOffset;
       if (prevScrollpos < currentScrollPos) {
