@@ -25,16 +25,20 @@ body {
 
 #profile {
   transition: 1s;
-  transition-property: margin-right tranform;
+  transition-property: all;
+  z-index: 10;
+  position: fixed;
+  width: max-content;
 }
 .profileleft {
-  position: fixed;
-  transform: scale(0.63);
+  transform: scale(0.63) translateY(-30vh);
   margin-right: 70%;
-  width: max-content;
 }
 
 @media screen and (max-width: 1180px) {
+  #profile {
+    position: relative;
+  }
   .profileleft {
     position: relative;
     transform: scale(1);
