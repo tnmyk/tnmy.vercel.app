@@ -1,15 +1,18 @@
+import { route } from "next/dist/server/router";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 const StyledLink = ({ children, href }: { children: string; href: any }) => {
   const router = useRouter();
-
+  useEffect(() => {
+    console.log(router);
+  }, [router.asPath]);
   return (
     <Link href={href}>
       <a
         className={`${
-          (children === "home" &&
-            (router.asPath === "/" || !router.asPath)) ||
+          (children === "home" && (router.asPath === "/" || !router.asPath)) ||
           router.asPath.includes(children)
             ? "verticalNavActive"
             : ""
