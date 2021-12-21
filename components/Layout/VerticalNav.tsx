@@ -9,7 +9,11 @@ const StyledLink = ({ children, href }: { children: String; href: any }) => {
     <Link href={href}>
       <a
         style={{
-          borderBottom: router.asPath === href ? "3px solid pink" : "",
+          borderBottom:
+            router.asPath === href ||
+            (children === "home" && router.asPath === "")
+              ? "3px solid pink"
+              : "",
         }}
         className=" text-2xl w-fit"
       >
