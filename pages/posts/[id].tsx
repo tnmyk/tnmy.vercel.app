@@ -34,8 +34,8 @@ const Block = ({
       className = "font-mono bg-gray-800 rounded p-2";
       return (
         <div className={className} style={style}>
-          {children.split("\n").map((exp) => {
-            return <div>{exp}</div>;
+          {children.split("\n").map((exp, index) => {
+            return <div key={index}>{exp}</div>;
           })}
         </div>
       );
