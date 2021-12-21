@@ -34,7 +34,7 @@ body {
   width: max-content;
 }
 
-@media screen and (max-width: 1280px) {
+@media screen and (max-width: 1180px) {
   .profileleft {
     position: relative;
     transform: scale(1);
