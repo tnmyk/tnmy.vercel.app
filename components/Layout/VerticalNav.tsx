@@ -27,7 +27,7 @@ const StyledLink = ({ children, href }: { children: string; href: any }) => {
 const VerticalNav = () => {
   return (
     <div className="hidden sm:flex fixed h-screen flex flex-col items-center justify-center w-1/4">
-      <div className="flex flex-col gap-y-4">
+      <div className="mt-48 flex flex-col gap-y-4">
         <StyledLink href="/">home</StyledLink>
         <StyledLink href="/posts">posts</StyledLink>
         <StyledLink href="/projects">projects</StyledLink>
