@@ -32,7 +32,7 @@ body {
 }
 .profileleft {
   transform: scale(0.63) translateY(-34vh);
-  margin-right: 70%;
+  margin-right: 62%;
 }
 #profile div {
   transition: 1s;
@@ -40,8 +40,34 @@ body {
 .profileleft div {
   @apply gap-x-4;
 }
+#profile div .profileText {
+  transition: 1s;
+}
+#profile div .profileText div {
+  transition: 1s;
+  max-width: max-content;
+}
+@media screen and (min-width: 640px) {
+  .profileleft div #profileText {
+    right: 50%;
+    bottom: -4.5rem;
+  }
+  .profileleft div #profileText div {
+    margin-left: 50%;
+    transform: translateX(-50%);
+  }
+  #profile div img {
+    margin-right: 15rem;
+  }
+  .profileText {
+    position: fixed;
+    right: -2rem;
+    bottom: 50%;
+    transform: translateY(50%);
+  }
+}
 
-@media screen and (max-width: 1180px) {
+@media screen and (max-width: 640px) {
   #profile {
     position: relative;
   }
@@ -67,8 +93,6 @@ body {
   }
 }
 
-.verticalNavActive {
-}
 .verticalNavActive span {
   width: 100% !important;
 }
