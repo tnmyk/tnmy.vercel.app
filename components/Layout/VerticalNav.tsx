@@ -4,9 +4,6 @@ import { useEffect } from "react";
 
 const StyledLink = ({ children, href }: { children: string; href: any }) => {
   const router = useRouter();
-  useEffect(() => {
-    console.log(router);
-  }, [router.pathname]);
   return (
     <Link href={href}>
       <a

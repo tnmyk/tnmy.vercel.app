@@ -5,13 +5,16 @@ import { useEffect } from "react";
 
 const Block = ({
   children,
-  annotations,
-  type,
-}: {
+  block,
+}: // annotations,
+// type,
+{
   children: String;
-  annotations: { [key: string]: any };
-  type: String;
+  // annotations: { [key: string]: any };
+  // type: String;
+  block: any;
 }) => {
+  const { annotations, type, checked } = block;
   const style = {
     fontStyle: annotations.italic ? "italic" : "",
     fontWeight: annotations.bold ? "800" : "",
@@ -33,8 +36,15 @@ const Block = ({
     case "heading_3":
       className = "sm:text-xl";
       break;
+    case "to_do":
+      return (
+        <div className={className} style={style}>
+          <input type="checkbox" checked={checked} />
+          <span style={{ marginLeft: "0.5rem" }}>{block.text}</span>
+        </div>
+      );
     case "code":
-      className = "font-mono bg-gray-800 rounded p-2";
+      className = "font-mono bg-gray-800 rounded p-2 mb-5";
       return (
         <div className={className} style={style}>
           {children.split("\n").map((exp, index) => {
@@ -99,7 +109,11 @@ const Post = ({
         <br />
         {postData.map((x: any, index: any) => {
           return (
-            <Block key={index} annotations={x.annotations} type={x.type}>
+            <Block
+              key={index}
+              block={x}
+              // annotations={x.annotations} type={x.type}
+            >
               {x.text}
             </Block>
           );
@@ -156,6 +170,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       type,
       text: x[type].text[0].plain_text,
       annotations: x[type].text[0].annotations,
+      checked: x[type].checked ? true : false,
     };
   });
   return {
