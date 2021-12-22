@@ -26,7 +26,7 @@ const Block = ({
   let className;
   switch (type) {
     case "break":
-      return <br />;
+      return <div className="w-full h-1" />;
     case "heading_1":
       className = " text-xl sm:text-3xl";
       break;
@@ -34,13 +34,21 @@ const Block = ({
       className = "text-lg sm:text-2xl";
       break;
     case "heading_3":
-      className = "sm:text-xl";
+      className = "sm:text-xl mb-1";
       break;
     case "to_do":
       return (
         <div className={className} style={style}>
           <input type="checkbox" checked={checked} />
-          <span style={{ marginLeft: "0.5rem" }}>{block.text}</span>
+          <span
+            style={{
+              marginLeft: "0.4rem",
+              color: checked ? "gray" : "",
+              textDecoration: checked ? "line-through" : "",
+            }}
+          >
+            {block.text}
+          </span>
         </div>
       );
     case "code":
