@@ -16,6 +16,9 @@ const Block = ({
     fontStyle: annotations.italic ? "italic" : "",
     fontWeight: annotations.bold ? "800" : "",
     color: annotations.color,
+    textDecoration: `${annotations.underline ? "underline" : ""} ${
+      annotations.strikethrough ? "line-through" : ""
+    }`,
   };
   let className;
   switch (type) {
