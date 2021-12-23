@@ -1,0 +1,25 @@
+.post {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: 0.4s;
+}
+.post div {
+  position: absolute;
+  width: 30rem;
+  height: 30rem;
+  max-width: 0;
+  max-height: 0;
+  border-radius: 50%;
+  background-color: violet;
+  z-index: -1;
+  transition: 0.8s;
+}
+
+.post:hover {
+  transform: scale(1.04);
+}
+.post:hover div {
+  max-width: 30rem;
+  max-height: 30rem;
+}
