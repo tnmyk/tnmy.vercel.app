@@ -5,6 +5,7 @@ import Projects from "../components/Home/Projects/Projects";
 import { Client } from "@notionhq/client";
 import Head from "next/head";
 import Contact from "../components/Home/Contact/Contact";
+import userData from "../userData";
 
 const Home = ({
   posts,
@@ -19,9 +20,7 @@ const Home = ({
         <title>Home</title>
       </Head>
       <Profile />
-      <div className="mt-12 text-xl mb-20">
-        I like <span className="text-red-200">building.</span>
-      </div>
+      <div className="mt-12 text-xl mb-20">{userData.quote}</div>
       <span className="text-sm mb-3">experience</span>
       <Experience />
       <span className="text-sm mt-16 mb-3">posts</span>

@@ -2,7 +2,6 @@ import Link from "next/link";
 import { BsEye } from "react-icons/bs";
 import styles from "./Posts.module.css";
 const Posts = ({ posts }: { posts: Array<{ [key: string]: any }> }) => {
-  console.log(styles.post);
   return (
     <div
       style={{ maxWidth: "60%" }}
