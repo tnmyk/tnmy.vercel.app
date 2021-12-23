@@ -1,4 +1,5 @@
 import { Client } from "@notionhq/client";
+import Head from "next/head";
 import Projects from "../components/Home/Projects/Projects";
 const ProjectsPage = ({
   projects,
@@ -6,10 +7,15 @@ const ProjectsPage = ({
   projects: Array<{ [key: string]: any }>;
 }) => {
   return (
-    <div className="flex flex-col w-full items-center mt-8">
-      <h1 className="mb-3">projects</h1>
-      <Projects projects={projects} />
-    </div>
+    <>
+      <Head>
+        <title>projects</title>
+      </Head>
+      <div className="flex flex-col w-full items-center mt-8">
+        <h1 className="mb-3">projects</h1>
+        <Projects projects={projects} />
+      </div>
+    </>
   );
 };
 export default ProjectsPage;

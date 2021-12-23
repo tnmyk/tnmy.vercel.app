@@ -1,8 +1,12 @@
 import { Client } from "@notionhq/client";
+import Head from "next/head";
 import Posts from "../../components/Home/Posts/Posts";
 const PostsPage = ({ posts }: { posts: Array<{ [key: string]: any }> }) => {
   return (
     <>
+      <Head>
+        <title>posts</title>
+      </Head>
       <Posts posts={posts} />
     </>
   );
