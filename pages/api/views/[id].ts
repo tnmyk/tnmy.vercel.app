@@ -34,15 +34,16 @@ export default async function handler(
     const notion = new Client({ auth: process.env.NOTION_KEY });
 
     const initresponse: any = await notion.pages.retrieve({ page_id: pageId });
-
+    let currentViews = initresponse.properties.Views.number;
+    if (!currentViews) currentViews = 0;
     await notion.pages.update({
       page_id: pageId,
       properties: {
         Views: {
-          number: initresponse.properties.Views.number + 1,
+          number: currentViews + 1,
         },
       },
     });
-    res.status(200).json({ views: initresponse.properties.Views.number + 1 });
+    res.status(200).json({ views: currentViews + 1 });
   }
 }
