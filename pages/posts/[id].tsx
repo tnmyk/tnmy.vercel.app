@@ -3,17 +3,7 @@ import { GetStaticProps } from "next";
 import Head from "next/head";
 import { useEffect } from "react";
 
-const Block = ({
-  children,
-  block,
-}: // annotations,
-// type,
-{
-  children: String;
-  // annotations: { [key: string]: any };
-  // type: String;
-  block: any;
-}) => {
+const Block = ({ children, block }: { children: String; block: any }) => {
   const { annotations, type, checked } = block;
   const style = {
     fontStyle: annotations.italic ? "italic" : "",
@@ -28,13 +18,13 @@ const Block = ({
     case "break":
       return <div className="w-full h-1" />;
     case "heading_1":
-      className = " text-xl sm:text-3xl";
+      className = " text-lg sm:text-2xl";
       break;
     case "heading_2":
-      className = "text-lg sm:text-2xl";
+      className = "text-md sm:text-xl";
       break;
     case "heading_3":
-      className = "sm:text-xl mb-1";
+      className = "sm:text-lg mb-1";
       break;
     case "to_do":
       return (
@@ -103,7 +93,7 @@ const Post = ({
         <title>{postProperties.Name.title[0].plain_text}</title>
       </Head>
       <div className="mt-6 sm:ml-12 sm:mt-12 flex flex-col gap-y-1 w-10/12  sm:w-3/5 md:w-1/2">
-        <h1 className="text-3xl sm:text-5xl">
+        <h1 className="text-3xl sm:text-3xl">
           {postProperties.Name.title[0].plain_text}
         </h1>
         <p className="text-gray-200 text-xs sm:text-md">
