@@ -5,7 +5,7 @@ import Projects from "../components/Home/Projects/Projects";
 import { Client } from "@notionhq/client";
 import Head from "next/head";
 import Contact from "../components/Home/Contact/Contact";
-import userData from "../userData";
+import userData from "../components/userData";
 
 const Home = ({
   posts,

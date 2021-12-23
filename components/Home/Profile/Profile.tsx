@@ -4,7 +4,7 @@ import { AiFillGithub } from "react-icons/ai";
 import { BsTwitter } from "react-icons/bs";
 import { GrLinkedinOption } from "react-icons/gr";
 import { SiDiscord } from "react-icons/si";
-import userData from "../../../userData";
+import userData from "../../userData";
 const Profile = () => {
   useEffect(() => {
     var prevScrollpos = 20;

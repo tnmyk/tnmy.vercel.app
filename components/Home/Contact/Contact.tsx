@@ -1,4 +1,4 @@
-import userData from "../../../userData";
+import userData from "../../userData";
 
 const Contact = () => {
   return (
