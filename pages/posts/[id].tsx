@@ -3,6 +3,7 @@ import { GetStaticProps } from "next";
 import Head from "next/head";
 import { useEffect } from "react";
 
+let listNumber = 0;
 const Block = ({ children, block }: { children: String; block: any }) => {
   const { annotations, type, checked } = block;
   const style = {
@@ -14,6 +15,21 @@ const Block = ({ children, block }: { children: String; block: any }) => {
     }`,
   };
   let className;
+
+  switch (type) {
+    case "numbered_list_item":
+      listNumber++;
+      return (
+        <div className="ml-1">
+          <span className="text-sm">{listNumber / 2}.</span> {children}
+        </div>
+      );
+    default:
+      break;
+  }
+
+  listNumber = 0;
+
   switch (type) {
     case "break":
       return <div className="w-full h-1" />;
@@ -52,6 +68,11 @@ const Block = ({ children, block }: { children: String; block: any }) => {
       );
     case "paragraph":
       break;
+    case "bulleted_list_item":
+      return <div className="ml-1">&#8226; {children}</div>;
+
+    default:
+      console.log(block);
   }
   return (
     <div className={className} style={style}>
