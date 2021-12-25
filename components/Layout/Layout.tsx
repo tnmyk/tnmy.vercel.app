@@ -1,15 +1,20 @@
-import { NextComponentType } from "next";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Nav from "../Nav/Nav";
-import { AppProps } from "next/app";
-import VerticalNav from "./VerticalNav";
+import VerticalNav from "./VerticalNav/VerticalNav";
 
 const Layout = ({ children }: { children: any }) => {
+  const [isMenuOpen, setMenuOpen] = useState(false);
+  useEffect(() => {
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    if (!isMobile) {
+      setMenuOpen(true);
+    }
+  }, []);
   return (
     <>
-      <VerticalNav />
+      <VerticalNav isMenuOpen={isMenuOpen} />
       <div className="flex flex-col items-center pb-10">
-        <Nav />
+        <Nav isMenuOpen={isMenuOpen} setMenuOpen={setMenuOpen} />
         {children}
       </div>
     </>
