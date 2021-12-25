@@ -12,7 +12,7 @@ const Layout = ({ children }: { children: any }) => {
   }, []);
   return (
     <>
-      <VerticalNav isMenuOpen={isMenuOpen} />
+      <VerticalNav isMenuOpen={isMenuOpen} setMenuOpen={setMenuOpen} />
       <div className="flex flex-col items-center pb-10">
         <Nav isMenuOpen={isMenuOpen} setMenuOpen={setMenuOpen} />
         {children}
