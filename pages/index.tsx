@@ -6,6 +6,8 @@ import { Client } from "@notionhq/client";
 import Head from "next/head";
 import Contact from "../components/Home/Contact/Contact";
 import userData from "../components/userData";
+import Link from "next/link";
+import { BsArrowRight } from "react-icons/bs";
 
 const Home = ({
   posts,
@@ -25,8 +27,18 @@ const Home = ({
       <Experience />
       <span className="text-sm mt-16 mb-3">posts</span>
       <Posts posts={posts} />
-      <span className="text-sm mt-16 mb-3">projects</span>
+      <Link href="/posts">
+        <a className="mt-6 text-gray-300 flex items-center gap-x-2 underline">
+          see more posts <BsArrowRight />
+        </a>
+      </Link>
+      <span className="text-sm mt-24 mb-3">projects</span>
       <Projects projects={projects} />
+      <Link href="/projects">
+        <a className="mt-4 text-gray-300 flex items-center gap-x-2 underline">
+          see more projects <BsArrowRight />
+        </a>
+      </Link>
       <Contact />
       <div className="border-t-2 h-6 w-4/5 sm:w-5/12 mt-28 border-neutral-600" />
     </>
