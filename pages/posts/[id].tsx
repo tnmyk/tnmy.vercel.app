@@ -127,6 +127,9 @@ const Post = ({
 
         <br />
         {postData.map((x: any, index: any) => {
+          if (x.type === "image") {
+            return <ImageBlock block={x} />;
+          }
           return (
             <Block
               key={index}
@@ -180,6 +183,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const results = response.results;
   const postData = results.map((x: any) => {
     const type = x.type;
+    if (type === "image") {
+      return x;
+    }
     if (!x[type].text[0])
       return {
         type: "break",
@@ -200,4 +206,12 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     },
     revalidate: 10,
   };
+};
+
+const ImageBlock = ({ block }: { block: { [key: string]: any } }) => {
+  return (
+    <>
+      <img src={block.image.file.url} width={"50%"} className="mx-auto my-4" />
+    </>
+  );
 };
