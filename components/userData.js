@@ -9,6 +9,6 @@ const userData = {
   github: "https://github.com/tnmyk",
   linkedIn: "https://www.linkedin.com/",
   discord: "https://discordapp.com/users/757670601442721793 ",
-  twitter: "https://twitter.com/",
+  twitter: "https://twitter.com/tanmayx_",
 };
 export default userData;

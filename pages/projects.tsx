@@ -1,6 +1,8 @@
 import { Client } from "@notionhq/client";
 import Head from "next/head";
+import { BsGithub } from "react-icons/bs";
 import Projects from "../components/Home/Projects/Projects";
+import userData from "../components/userData";
 const ProjectsPage = ({
   projects,
 }: {
@@ -15,6 +17,14 @@ const ProjectsPage = ({
         <h1 className="mb-3">projects</h1>
         <Projects projects={projects} />
       </div>
+      <a
+        href={userData.github}
+        target="_blank"
+        rel="noreferrer"
+        className="mt-10 text-gray-300 text-sm underline"
+      >
+        view more on my github <BsGithub className="inline" />
+      </a>
     </>
   );
 };
@@ -25,16 +35,6 @@ export async function getStaticProps() {
 
   const projectsResponse = await notion.databases.query({
     database_id: process.env.NOTION_PROJECTS_DATABASE_ID!,
-    filter: {
-      and: [
-        {
-          property: "Tags",
-          multi_select: {
-            contains: "homepage",
-          },
-        },
-      ],
-    },
     sorts: [
       {
         property: "Rank",

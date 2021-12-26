@@ -33,24 +33,24 @@ const Profile = () => {
             <h1 className="font-medium text-3xl w-max">{userData.name}</h1>
             <div className=" text-gray-200 mt-1 mb-4">{userData.bio}</div>
             <div className="flex items-center text-xl gap-3">
-              {userData.github && (
-                <a href={userData.github} target="_blank" rel="noreferrer">
-                  <AiFillGithub />
-                </a>
-              )}
               {userData.twitter && (
                 <a href={userData.twitter} target="_blank" rel="noreferrer">
                   <BsTwitter />
                 </a>
               )}
-              {userData.linkedIn && (
-                <a href={userData.linkedIn} target="_blank" rel="noreferrer">
-                  <GrLinkedinOption />
+              {userData.github && (
+                <a href={userData.github} target="_blank" rel="noreferrer">
+                  <AiFillGithub />
                 </a>
               )}
               {userData.discord && (
                 <a href={userData.discord} target="_blank" rel="noreferrer">
                   <SiDiscord />
+                </a>
+              )}
+              {userData.linkedIn && (
+                <a href={userData.linkedIn} target="_blank" rel="noreferrer">
+                  <GrLinkedinOption />
                 </a>
               )}
             </div>
