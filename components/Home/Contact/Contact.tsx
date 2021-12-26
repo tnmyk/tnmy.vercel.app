@@ -13,7 +13,7 @@ const Contact = () => {
         dm me on twitter
       </a>
       <div className="text-sm mt-3 text-gray-200">
-        open for hackathons, projects, etc
+        open for hackathons, projects or a chat :)
       </div>
     </>
   );
