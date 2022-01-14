@@ -32,7 +32,7 @@ const Block = ({ children, block }: { children: String; block: any }) => {
 
   switch (type) {
     case "break":
-      return <div className="w-full h-1" />;
+      return <div className="w-full h-4" />;
     case "heading_1":
       className = " text-lg sm:text-2xl";
       break;
