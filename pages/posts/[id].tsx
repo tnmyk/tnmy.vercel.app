@@ -156,6 +156,7 @@ export async function getStaticPaths() {
   });
   const results: any = postsResponse.results;
   const paths = results.map((res: { [key: string]: any }) => {
+    console.log(res.id);
     return {
       params: {
         // id: res.properties.Name.title[0].plain_text.split(" ").join("-"),
@@ -166,6 +167,7 @@ export async function getStaticPaths() {
   return {
     paths,
     fallback: false,
+    revalidate: 10,
   };
 }
 
