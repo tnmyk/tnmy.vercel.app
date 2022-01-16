@@ -31,6 +31,14 @@ const VerticalNav = ({
         <StyledLink setMenuOpen={setMenuOpen} href="/projects">
           projects
         </StyledLink>
+        <a
+          href="/tanmay-kachroo-resume.pdf"
+          target="_blank"
+          rel="noreferrer"
+          className="text-2xl w-fit"
+        >
+          Resume
+        </a>
       </div>
     </div>
   );
