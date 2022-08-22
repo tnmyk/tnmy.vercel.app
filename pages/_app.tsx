@@ -25,6 +25,8 @@ function MyApp({ Component, pageProps }: AppProps) {
           href="/images/favicon-16x16.png"
         />
         <link rel="manifest" href="/images/site.webmanifest" />
+        {/* Remove site from search */}
+        <meta name="robots" content="noindex"/>
       </Head>
       <Component {...pageProps} />
     </Layout>
