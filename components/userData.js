@@ -1,5 +1,5 @@
 const userData = {
-  name: "tanmay kachroo",
+  name: "tanmay",
   bio: "fullstack dev",
   quote: (
     <>
