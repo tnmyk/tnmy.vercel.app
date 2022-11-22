@@ -29,7 +29,7 @@ const Profile = () => {
             id="profileText"
             className="profileText flex flex-col items-center sm:block"
           >
-            <h1 className="font-medium text-3xl w-max">{userData.name}</h1>
+            <h1 className="font-medium text-3xl sm:w-max">{userData.name}</h1>
             <div className=" text-gray-200 mt-1 mb-4">{userData.bio}</div>
             <div className="flex items-center text-xl gap-3 w-full">
               {userData.twitter && (

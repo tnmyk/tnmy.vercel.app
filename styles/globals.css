@@ -37,22 +37,10 @@ body {
 #profile div {
   transition: 1s;
 }
-.profileleft div {
-  @apply gap-x-4;
-}
+
 #profile div .profileText {
   transition: 1s;
   min-width: 60%;
-}
-
-.profileText h1 {
-  transition: 1s;
-  margin-left: 0%;
-}
-
-.profileleft .profileText h1 {
-  margin-left: 50%;
-  transform: translateX(-50%);
 }
 
 #profile div .profileText div {
@@ -78,6 +66,17 @@ body {
     right: -2rem;
     bottom: 50%;
     transform: translateY(50%);
+  }
+  .profileleft div {
+    @apply gap-x-4;
+  }
+  .profileText h1 {
+    transition: 1s;
+    margin-left: 0%;
+  }
+  .profileleft .profileText h1 {
+    margin-left: 50%;
+    transform: translateX(-50%);
   }
 }
 
