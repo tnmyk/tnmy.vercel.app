@@ -31,7 +31,7 @@ const Profile = () => {
           >
             <h1 className="font-medium text-3xl w-max">{userData.name}</h1>
             <div className=" text-gray-200 mt-1 mb-4">{userData.bio}</div>
-            <div className="flex items-center text-xl gap-3">
+            <div className="flex items-center text-xl gap-3 w-full">
               {userData.twitter && (
                 <a href={userData.twitter} target="_blank" rel="noreferrer">
                   <BsTwitter />

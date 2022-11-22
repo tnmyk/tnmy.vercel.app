@@ -42,16 +42,30 @@ body {
 }
 #profile div .profileText {
   transition: 1s;
+  min-width: 60%;
 }
+
+.profileText h1 {
+  transition: 1s;
+  margin-left: 0%;
+}
+
+.profileleft .profileText h1 {
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+
 #profile div .profileText div {
   transition: 1s;
   max-width: max-content;
 }
+
 @media screen and (min-width: 640px) {
   .profileleft div #profileText {
     right: 50%;
     bottom: -4.5rem;
   }
+  /* Dont need this anymore, idk why */
   .profileleft div #profileText div {
     margin-left: 50%;
     transform: translateX(-50%);
